@@ -22,7 +22,7 @@ APMRoverMode::APMRoverMode(uint32_t mode, bool settable)
         {STEERING,       "Steering"},
         {HOLD,           "Hold"},
         {LOITER,         "Loiter"},
-#if 0
+#if 1
     // Follow me not ready for Stable
         {FOLLOW,         "Follow"},
 #endif
@@ -43,7 +43,7 @@ ArduRoverFirmwarePlugin::ArduRoverFirmwarePlugin(void)
         APMRoverMode(APMRoverMode::STEERING     ,true),
         APMRoverMode(APMRoverMode::HOLD         ,true),
         APMRoverMode(APMRoverMode::LOITER       ,true),
-#if 0
+#if 1
     // Follow me not ready for Stable
         APMRoverMode(APMRoverMode::FOLLOW       ,true),
 #endif
@@ -84,7 +84,7 @@ bool ArduRoverFirmwarePlugin::supportsNegativeThrust(Vehicle* /*vehicle*/)
     return true;
 }
 
-#if 0
+#if 1
     // Follow me not ready for Stable
 void ArduRoverFirmwarePlugin::sendGCSMotionReport(Vehicle* vehicle, FollowMe::GCSMotionReport& motionReport, uint8_t estimatationCapabilities)
 {

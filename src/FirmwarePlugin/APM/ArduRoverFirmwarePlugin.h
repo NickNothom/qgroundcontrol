@@ -25,7 +25,7 @@ public:
         STEERING        = 3,
         HOLD            = 4,
         LOITER          = 5,
-#if 0
+#if 1
     // Follow me not ready for Stable
         FOLLOW          = 6,
 #endif
@@ -43,7 +43,7 @@ public:
 class ArduRoverFirmwarePlugin : public APMFirmwarePlugin
 {
     Q_OBJECT
-    
+
 public:
     ArduRoverFirmwarePlugin(void);
 
@@ -56,7 +56,7 @@ public:
     bool    supportsNegativeThrust                  (Vehicle *) final;
     bool    supportsSmartRTL                        (void) const override { return true; }
     QString offlineEditingParamFile                 (Vehicle* vehicle) override { Q_UNUSED(vehicle); return QStringLiteral(":/FirmwarePlugin/APM/Rover.OfflineEditing.params"); }
-#if 0
+#if 1
     // Follow me not ready for Stable
     void    sendGCSMotionReport                     (Vehicle* vehicle, FollowMe::GCSMotionReport& motionReport, uint8_t estimatationCapabilities) override;
 #endif
