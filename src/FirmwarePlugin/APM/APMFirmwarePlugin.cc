@@ -911,10 +911,10 @@ void APMFirmwarePlugin::pauseVehicle(Vehicle* vehicle)
 
 void APMFirmwarePlugin::guidedModeGotoLocation(Vehicle* vehicle, const QGeoCoordinate& gotoCoord)
 {
-    if (qIsNaN(vehicle->altitudeRelative()->rawValue().toDouble())) {
-        qgcApp()->showMessage(QStringLiteral("Unable to go to location, vehicle position not known."));
-        return;
-    }
+//    if (qIsNaN(vehicle->altitudeRelative()->rawValue().toDouble())) {
+//        qgcApp()->showMessage(QStringLiteral("Unable to go to location, vehicle position not known."));
+//        return;
+//    }
 
 
     setGuidedMode(vehicle, true);

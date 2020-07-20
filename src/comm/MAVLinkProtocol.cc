@@ -312,7 +312,23 @@ void MAVLinkProtocol::receiveBytes(LinkInterface* link, QByteArray b)
                 emit vehicleHeartbeatInfo(link, _message.sysid, _message.compid, heartbeat.autopilot, heartbeat.type);
             }
 
+            if (_message.msgid == MAVLINK_MSG_ID_HIGH_LATENCY) {
+                //Ignore the message if this isn't a high_latency link
+                if(!link->highLatency()) {
+                    return;
+                }
+                _startLogging();
+                mavlink_high_latency_t highLatency;
+                mavlink_msg_high_latency_decode(&_message, &highLatency);
+                // HIGH_LATENCY does not provide autopilot or type information, generic is our safest bet
+                emit vehicleHeartbeatInfo(link, _message.sysid, _message.compid, MAV_AUTOPILOT_GENERIC, MAV_TYPE_GENERIC);
+            }
+
             if (_message.msgid == MAVLINK_MSG_ID_HIGH_LATENCY2) {
+                //Ignore the message if this isn't a high_latency link
+                if(!link->highLatency()) {
+                    return;
+                }
                 _startLogging();
                 mavlink_high_latency2_t highLatency2;
                 mavlink_msg_high_latency2_decode(&_message, &highLatency2);
